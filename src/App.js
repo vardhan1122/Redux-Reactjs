@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import {Provider} from "react-redux";
+import {store} from "./redux/store";
 
+// product addition
+import ProductItem from "./components/ProductItem";
+
+import ClassWishMessage from "./components/ClassWishMessage";
+import FuncWishMessage from "./components/FuncWishMessage";
+import ReduxWishMessage from "./components/ReduxWishMessage";
+
+let App = () => {
+
+    return(
+        <React.Fragment>
+            <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
+                <a href="/" className="navbar-brand">React Redux - Events Binding</a>
+            </nav>
+
+        <ClassWishMessage/>
+        <FuncWishMessage/>
+
+           <Provider store={store}>
+                <ReduxWishMessage/> 
+                <ProductItem/>       
+           </Provider>
+
+         <div style={{marginBottom : '200px'}}/>
+        </React.Fragment>
+    );
+};
 export default App;
